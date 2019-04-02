@@ -1,0 +1,14 @@
+.cproject
+.project
+.settings
+Module.symvers
+modules.order
+*.o
+*~
+core
+.depend
+.*.cmd
+*.ko
+*.mod.c
+.tmp_versions
+.vscode
