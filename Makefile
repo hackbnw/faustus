@@ -17,10 +17,11 @@ clean:
 
 dkmsclean:
 	@dkms remove faustus/0.1 --all || true
+	@dkms remove faustus/0.2 --all || true
 
 dkms: dkmsclean
 	dkms add .
-	dkms install -m faustus -v 0.1
+	dkms install -m faustus -v 0.2
 
 onboot:
 	echo "faustus" > /etc/modules-load.d/faustus.conf
