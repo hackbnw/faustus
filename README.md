@@ -15,7 +15,8 @@ If your machine does expose keyboard backlight as USB device (you see any device
 |-                       |-           |-                   |-                  |
 |FX505GM                 |FX505GM.301 |Ubuntu 18.04.2 LTS  |4.18.0-25-generic  |
 |FX505DD (not tested)    |?           |?                   |                   |
-|FX505DY (not tested)    |?           |?                   |                   |
+|FX505DY                 |FX505DY.308 |Arch Linux          |5.1.15-arch1-1-ARCH|
+|FX705GE                 |?           |?                   |?                  |
 
 See "Contributing" section for other versions.
 
