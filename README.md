@@ -60,6 +60,7 @@ $ sudo apt-get install dkms
 Compile and load the driver temporarily
 ```
 $ make
+$ sudo modprobe sparse-keymap wmi video
 $ sudo insmod src/faustus.ko
 ```
 and check `dmesg | tail` to verify the driver is loaded and no errors are present.
