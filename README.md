@@ -126,7 +126,7 @@ TLDR: Run the `./set_rgb.sh` script as root.
 
 NOTE: The interface will most definitely switch to LED subsystem when submitted to mainline. This here is sort of hack.
 
-Driver exposes sysfs attributes in `/sys/devices/platform/faustus/kbbl/`. You have to write all the parameters and then write 1 to `kbbl_set` to write them permanently or 2 to write them temporary (the settings will reset on restart or hibernation). 
+Driver exposes sysfs attributes in `/sys/devices/platform/faustus/kbbl/`. You have to write all the parameters and then write 1 to `kbbl_set` to write them permanently or 2 to write them temporarily (the settings will reset on restart or hibernation). 
 
 The list of settings is:
 * `kbbl_red` - red component in hex [00 - ff]
@@ -148,7 +148,7 @@ The list of settings is:
   - 80? - should be logically shutdown, but I have genuinely no idea what it does
 
 ### Fan mode
-Is controlled by default by the driver itself when `Fn-F5` is pressed switching three modes (no vendor documentation or even hint found):
+Is controlled by default by the driver itself when `Fn-F5` is pressed switching three modes:
 * 0 - normal
 * 1 - overboost
 * 2 - silent
