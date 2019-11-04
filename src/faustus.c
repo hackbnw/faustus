@@ -1850,7 +1850,7 @@ static int fan_mode_check_present(struct asus_wmi *asus)
 	if (err == -ENODEV)
 		return 0;
 
-	return 0;
+	return err;
 }
 
 static int fan_mode_write(struct asus_wmi *asus)
