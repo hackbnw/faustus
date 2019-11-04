@@ -1879,6 +1879,18 @@ static int fan_mode_write(struct asus_wmi *asus)
 	return 0;
 }
 
+static int fan_mode_set_default(struct asus_wmi *asus)
+{
+	int result = 0;
+
+	if (asus->fan_mode_available) {
+		asus->fan_mode = ASUS_FAN_MODE_NORMAL;
+		result = fan_mode_write(asus);
+	}
+
+	return result;
+}
+
 static int fan_mode_switch_next(struct asus_wmi *asus)
 {
 	if (asus->fan_mode == ASUS_FAN_MODE_NORMAL) {
@@ -2751,6 +2763,7 @@ static int asus_wmi_add(struct platform_device *pdev)
 	err = fan_mode_check_present(asus);
 	if (err)
 		goto fail_fan_mode;
+	fan_mode_set_default(asus);
 
 	err = asus_wmi_sysfs_init(asus->platform_device);
 	if (err)
