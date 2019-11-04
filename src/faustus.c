@@ -67,6 +67,7 @@ MODULE_LICENSE("GPL");
 #define NOTIFY_KBD_BRTDWN		0xc5
 #define NOTIFY_KBD_BRTTOGGLE		0xc7
 #define NOTIFY_KBD_FBM			0x99
+#define NOTIFY_KBD_FBM_2		0xae
 
 #define ASUS_WMI_FNLOCK_BIOS_DISABLED	BIT(0)
 
@@ -206,7 +207,7 @@ struct asus_wmi {
 	int asus_hwmon_num_fans;
 	int asus_hwmon_pwm;
 
-	bool fan_mode_available;
+	int fan_mode_available;
 	u8 fan_mode_mask;
 	u8 fan_mode;
 
@@ -1825,21 +1826,29 @@ static int fan_mode_check_present(struct asus_wmi *asus)
 	u32 result;
 	int err;
 
-	asus->fan_mode_available = false;
+	asus->fan_mode_available = 0;
 
 	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_FAN_MODE, &result);
-	if (err) {
-		if (err == -ENODEV)
-			return 0;
-		else
-			return err;
+
+	if (err == 0 &&
+			(result & ASUS_WMI_DSTS_PRESENCE_BIT) &&
+			(result & ASUS_FAN_MODES_MASK)) {
+		asus->fan_mode_available = 1;
+		asus->fan_mode_mask = result & ASUS_FAN_MODES_MASK;
+		return 0;
 	}
 
-	if ((result & ASUS_WMI_DSTS_PRESENCE_BIT) &&
+	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_FAN_MODE_2, &result);
+
+	if (err == 0 &&
+			(result & ASUS_WMI_DSTS_PRESENCE_BIT) &&
 			(result & ASUS_FAN_MODES_MASK)) {
-		asus->fan_mode_available = true;
+		asus->fan_mode_available = 2;
 		asus->fan_mode_mask = result & ASUS_FAN_MODES_MASK;
 	}
+
+	if (err == -ENODEV)
+		return 0;
 
 	return 0;
 }
@@ -1849,11 +1858,13 @@ static int fan_mode_write(struct asus_wmi *asus)
 	int err;
 	u8 value;
 	u32 retval;
+	u32 dev_id = asus->fan_mode_available == 1 ?
+		ASUS_WMI_DEVID_FAN_MODE : ASUS_WMI_DEVID_FAN_MODE_2;
 
 	value = asus->fan_mode;
 
 	pr_info("Set fan mode: %u\n", value);
-	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_FAN_MODE, value, &retval);
+	err = asus_wmi_set_devstate(dev_id, value, &retval);
 
 	if (err) {
 		pr_warn("Failed to set fan mode: %d\n", err);
@@ -2206,7 +2217,8 @@ static void asus_wmi_handle_event_code(int code, struct asus_wmi *asus)
 		return;
 	}
 
-	if (asus->fan_mode_available && code == NOTIFY_KBD_FBM) {
+	if (asus->fan_mode_available &&
+		(code == NOTIFY_KBD_FBM || code == NOTIFY_KBD_FBM_2)) {
 		fan_mode_switch_next(asus);
 		return;
 	}
@@ -2390,7 +2402,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
 	else if (attr == &dev_attr_als_enable.attr)
 		devid = ASUS_WMI_DEVID_ALS_ENABLE;
 	else if (attr == &dev_attr_fan_mode.attr)
-		ok = asus->fan_mode_available;
+		ok = asus->fan_mode_available != 0;
 
 	if (devid != -1)
 		ok = !(asus_wmi_get_devstate_simple(asus, devid) < 0);
