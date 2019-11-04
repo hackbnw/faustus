@@ -1922,7 +1922,7 @@ static ssize_t fan_mode_store(struct device *dev, struct device_attribute *attr,
 	asus->fan_mode = new_mode;
 	fan_mode_write(asus);
 
-	return result;
+	return count;
 }
 
 // Fan mode: 0 - normal, 1 - overboost, 2 - silent
