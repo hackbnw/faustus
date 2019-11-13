@@ -67,6 +67,7 @@ MODULE_LICENSE("GPL");
 #define NOTIFY_KBD_BRTDWN		0xc5
 #define NOTIFY_KBD_BRTTOGGLE		0xc7
 #define NOTIFY_KBD_FBM			0x99
+#define NOTIFY_KBD_FBM2			0xae
 
 #define ASUS_WMI_FNLOCK_BIOS_DISABLED	BIT(0)
 
@@ -2206,7 +2207,8 @@ static void asus_wmi_handle_event_code(int code, struct asus_wmi *asus)
 		return;
 	}
 
-	if (asus->fan_mode_available && code == NOTIFY_KBD_FBM) {
+	if (asus->fan_mode_available &&
+			(code == NOTIFY_KBD_FBM || code == NOTIFY_KBD_FBM2)) {
 		fan_mode_switch_next(asus);
 		return;
 	}
