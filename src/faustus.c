@@ -208,6 +208,7 @@ struct asus_wmi {
 	int asus_hwmon_pwm;
 
 	bool fan_mode_available;
+	u32 fan_mode_devid;
 	u8 fan_mode_mask;
 	u8 fan_mode;
 
@@ -1821,14 +1822,12 @@ static int asus_wmi_fan_init(struct asus_wmi *asus)
 
 /* Fan mode *******************************************************************/
 
-static int fan_mode_check_present(struct asus_wmi *asus)
+static int fan_mode_check_present_with_devid(struct asus_wmi *asus, u32 devid)
 {
 	u32 result;
 	int err;
 
-	asus->fan_mode_available = false;
-
-	err = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_FAN_MODE, &result);
+	err = asus_wmi_get_devstate(asus, devid, &result);
 	if (err) {
 		if (err == -ENODEV)
 			return 0;
@@ -1839,7 +1838,27 @@ static int fan_mode_check_present(struct asus_wmi *asus)
 	if ((result & ASUS_WMI_DSTS_PRESENCE_BIT) &&
 			(result & ASUS_FAN_MODES_MASK)) {
 		asus->fan_mode_available = true;
+		asus->fan_mode_devid = devid;
 		asus->fan_mode_mask = result & ASUS_FAN_MODES_MASK;
+	}
+
+	return 0;
+}
+
+static int fan_mode_check_present(struct asus_wmi *asus)
+{
+	int err;
+
+	asus->fan_mode_available = false;
+
+	err = fan_mode_check_present_with_devid(asus, ASUS_WMI_DEVID_FAN_MODE);
+	if (err) {
+		return err;
+	}
+
+	if (!asus->fan_mode_available) {
+		err = fan_mode_check_present_with_devid(asus,
+				ASUS_WMI_DEVID_FAN_MODE2);
 	}
 
 	return 0;
@@ -1854,7 +1873,7 @@ static int fan_mode_write(struct asus_wmi *asus)
 	value = asus->fan_mode;
 
 	pr_info("Set fan mode: %u\n", value);
-	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_FAN_MODE, value, &retval);
+	err = asus_wmi_set_devstate(asus->fan_mode_devid, value, &retval);
 
 	if (err) {
 		pr_warn("Failed to set fan mode: %d\n", err);
