@@ -1918,15 +1918,16 @@ static ssize_t fan_mode_show(struct device *dev,
 static ssize_t fan_mode_store(struct device *dev, struct device_attribute *attr,
 		const char *buf, size_t count)
 {
-	int result;
 	u8 new_mode;
+
+	ssize_t consumed_bytes = strlen(buf);
 
 	struct asus_wmi *asus = dev_get_drvdata(dev);
 
-	result = kstrtou8(buf, 10, &new_mode);
-	if (result < 0) {
+	int successfully_converted = kstrtou8(buf, 10, &new_mode);
+	if (successfully_converted < 0) {
 		pr_warn("Trying to store invalid value\n");
-		return result;
+		return -EINVAL;
 	}
 
 	if (new_mode == ASUS_FAN_MODE_OVERBOOST) {
@@ -1942,7 +1943,7 @@ static ssize_t fan_mode_store(struct device *dev, struct device_attribute *attr,
 	asus->fan_mode = new_mode;
 	fan_mode_write(asus);
 
-	return result;
+	return consumed_bytes;
 }
 
 // Fan mode: 0 - normal, 1 - overboost, 2 - silent
