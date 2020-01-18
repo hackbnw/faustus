@@ -18,6 +18,7 @@ If your machine does expose keyboard backlight as USB device (you see any device
 |FX505DY                 |FX505DY.308 |Arch Linux          |5.1.15-arch1-1-ARCH|
 |FX705GE                 |?           |?                   |?                  |
 |FX705DY                 |FX705DY.304 |openSUSE Tumbleweed |5.1.16-1-default   |
+|FX505GD                 |FX505GD.304 |?                   |?                  |
 
 See "Contributing" section for other versions.
 
