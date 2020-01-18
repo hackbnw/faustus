@@ -19,6 +19,8 @@ If your machine does expose keyboard backlight as USB device (you see any device
 |FX705GE                 |?           |?                   |?                  |
 |FX705DY                 |FX705DY.304 |openSUSE Tumbleweed |5.1.16-1-default   |
 |FX505GD                 |FX505GD.304 |?                   |?                  |
+|FX505DT                 |FX505DT.304 |?                   |?                  |
+|FX705DT                 |FX705DT.308 |?                   |?                  |
 
 See "Contributing" section for other versions.
 
