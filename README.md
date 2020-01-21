@@ -11,16 +11,17 @@ If your machine does expose keyboard backlight as USB device (you see any device
 
 ## Systems
 
-|Model                   |BIOS        |OS                  |Kernel version     |
-|-                       |-           |-                   |-                  |
-|FX505GM                 |FX505GM.301 |Ubuntu 18.04.2 LTS  |4.18.0-25-generic  |
-|FX505DD (not tested)    |?           |?                   |                   |
-|FX505DY                 |FX505DY.308 |Arch Linux          |5.1.15-arch1-1-ARCH|
-|FX705GE                 |?           |?                   |?                  |
-|FX705DY                 |FX705DY.304 |openSUSE Tumbleweed |5.1.16-1-default   |
-|FX505GD                 |FX505GD.304 |?                   |?                  |
-|FX505DT                 |FX505DT.304 |?                   |?                  |
-|FX705DT                 |FX705DT.308 |?                   |?                  |
+|Model                   |BIOS        |OS                  |Kernel version      |
+|-                       |-           |-                   |-                   |
+|FX505GM                 |FX505GM.301 |Ubuntu 18.04.2 LTS  |4.18.0-25-generic   |
+|FX505DD (not tested)    |?           |?                   |                    |
+|FX505DY                 |FX505DY.308 |Arch Linux          |5.1.15-arch1-1-ARCH |
+|FX705GE                 |?           |?                   |?                   |
+|FX705DY                 |FX705DY.304 |openSUSE Tumbleweed |5.1.16-1-default    |
+|FX505GD                 |FX505GD.304 |?                   |?                   |
+|FX505DT                 |FX505DT.304 |?                   |?                   |
+|FX705DT                 |FX705DT.308 |?                   |?                   |
+|FX505DU                 |FX505DU.308 |Manjaro 18.1.5      |5.4.13-3-MANJARO    |
 
 See "Contributing" section for other versions.
 
