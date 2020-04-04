@@ -44,7 +44,6 @@
 #include <linux/debugfs.h>
 #include <linux/seq_file.h>
 #include <linux/platform_device.h>
-#include <linux/thermal.h>
 #include <linux/acpi.h>
 #include <linux/dmi.h>
 #include <acpi/video.h>
