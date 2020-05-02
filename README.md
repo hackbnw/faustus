@@ -38,6 +38,11 @@ and scroll down to check BIOS Information / Version (2nd column) and Base Board 
 * Color and mode control for RGB keyboard backlight
 * Fan boost mode switching
 
+## UI
+
+[icodelifee/TUF-Control](https://github.com/icodelifee/TUF-Control)  
+A Keyboard Lighting And Fan Mode Controller GUI App - awesome Electron-based frontend for this driver (WIP).
+
 ## Installation
 
 How to: first disable old drivers, then proceed using make to test that it works at all, then install via DKMS permanently and enable on boot.
