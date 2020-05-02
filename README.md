@@ -23,6 +23,7 @@ If your machine does expose keyboard backlight as USB device (you see any device
 |FX705DT                 |FX705DT.308 |?                   |?                   |
 |FX505DU                 |FX505DU.308 |Manjaro 18.1.5      |5.4.13-3-MANJARO    |
 |FX705DU                 |FX705DU.308 |Arch Linux          |5.4.13-zen1-1-zen   |
+|FX705GM                 |FX705GM.305 |Manjaro             |5.3.18-1-MANJARO    |
 
 See "Contributing" section for other versions.
 
