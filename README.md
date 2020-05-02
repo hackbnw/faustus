@@ -6,7 +6,7 @@ It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB b
 
 **How to decide if I should use it?**
 
-- If your machine does expose keyboard backlight as USB device (you see any devices with the ASUS vendor in output of `lsusb`) then this driver is not for you, check out [openauranb](https://github.com/MidhunSureshR/openauranb).
+- If your machine does expose keyboard backlight as USB device (you see any devices with the ASUS vendor in output of `lsusb`) then this driver is not for you, check out [CalcProgrammer1/OpenRGB](https://gitlab.com/CalcProgrammer1/OpenRGB), [flukejones/rog-core](https://github.com/flukejones/rog-core), [MidhunSureshR/openauranb](https://github.com/MidhunSureshR/openauranb) or [wroberts/rogauracore](https://github.com/wroberts/rogauracore).
 - If your laptop does not have RGB keyboard backlight and your kernel version is >= 5.3 - everything should work out of the box and there is no reason for you to be using this driver.
 - If you either have RGB keyboard backlight that is managed via WMI, LTS kernel or you want to use features from mainline, you might want to consider trying this out.
 
@@ -49,6 +49,9 @@ and scroll down to check BIOS Information / Version (2nd column) and Base Board 
 
 [icodelifee/TUF-Control](https://github.com/icodelifee/TUF-Control)  
 A Keyboard Lighting And Fan Mode Controller GUI App - awesome Electron-based frontend for this driver (WIP).
+
+[CalcProgrammer1/OpenRGB](https://gitlab.com/CalcProgrammer1/OpenRGB)  
+Open source RGB lighting control that doesn't depend on manufacturer software - supports multiple RGB controllers, including this driver.
 
 ## Installation
 
