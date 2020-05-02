@@ -2974,7 +2974,8 @@ static const struct dmi_system_id atw_dmi_list[] __initconst = {
 			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 			DMI_MATCH(DMI_PRODUCT_NAME, "FX505DU"),
 		},
-	}
+	},
+	{}
 };
 
 static int __init atw_init(void)
