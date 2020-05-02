@@ -2,9 +2,13 @@
 
 Experimental unofficial Linux platform driver module for ASUS TUF Gaming series laptops. 
 
-It is a backport of the asus-wmi / asus-nb-wmi drivers from the fornext branch + RGB backlight crudely cut-down to be useful for these laptops and packed as a DKMS module for 4.x / 5.x kernels.
+It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB backlight crudely cut-down to be useful for these laptops and packed as a DKMS module for 4.x / 5.x kernels.
 
-If your machine does expose keyboard backlight as USB device (you see any devices with the ASUS vendor in output of `lsusb`) then this driver is not for you, check out [openauranb](https://github.com/MidhunSureshR/openauranb).
+**How to decide if I should use it?**
+
+- If your machine does expose keyboard backlight as USB device (you see any devices with the ASUS vendor in output of `lsusb`) then this driver is not for you, check out [openauranb](https://github.com/MidhunSureshR/openauranb).
+- If your laptop does not have RGB keyboard backlight and your kernel version is >= 5.3 - everything should work out of the box and there is no reason for you to be using this driver.
+- If you either have RGB keyboard backlight that is managed via WMI, LTS kernel or you want to use features from mainline, you might want to consider trying this out.
 
 ## Fair warning
 **This is highly experimental and controls the ACPI / WMI responsible for dangerous low-level hardware features (for instance thermal management). So the possibility exists that you could erase data, lock up the system, disable thermal management and set your laptop on fire or worse. So use at your own risk if you know what you are doing.**
