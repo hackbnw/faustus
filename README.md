@@ -141,7 +141,7 @@ This is OS dependent, check the internet on how to do it right.
 ## Usage
 
 ### Keyboard backlight intensity
-Is exposed via ledclass device `/sys/class/leds/faustus::kbd_backlight` takes values 0 to 3. The driver changes brightness by itself when hotkeys are pressed.
+Is exposed via ledclass device `/sys/class/leds/asus::kbd_backlight` takes values 0 to 3. The driver changes brightness by itself when hotkeys are pressed.
 
 ### RGB backlight
 
@@ -171,12 +171,19 @@ The list of settings is:
   - 80? - should be logically shutdown, but I have genuinely no idea what it does
 
 ### Fan mode
-Is controlled by default by the driver itself when `Fn-F5` is pressed switching three modes:
-* 0 - normal
-* 1 - overboost
-* 2 - silent
 
-It can also be read and written with `/sys/devices/platform/faustus/fan_mode`. The mode will not be preserved on reboot or hibernation.
+Is controlled by default by the driver itself when `Fn-F5` is pressed switching three modes:
+
+- 0 - normal
+- 1 - overboost
+- 2 - silent
+
+There are two mode files available depending on the laptop model:
+
+- `/sys/devices/platform/faustus/fan_boost_mode`
+- `/sys/devices/platform/faustus/throttle_thermal_policy`.
+
+In case if the `throttle_thermal_policy` is present, it has always all 3 modes available, whereas individual modes of `fan_boost_mode` may or may not be available. The mode will not be preserved on reboot or hibernation.
 
 ## Contributing
 
