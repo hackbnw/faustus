@@ -76,6 +76,14 @@ MODULE_AUTHOR("Corentin Chary <corentin.chary@gmail.com>, "
 MODULE_DESCRIPTION("Backport of Asus Generic WMI Driver");
 MODULE_LICENSE("GPL");
 
+static bool let_it_burn = 0;
+module_param(let_it_burn, bool, 0);
+MODULE_PARM_DESC(let_it_burn, "Disable DMI check, force load");
+
+static bool report_key_events = 0;
+module_param(report_key_events, bool, 0644);
+MODULE_PARM_DESC(report_key_events, "Forward fan mode key events");
+
 #define ASUS_WMI_MGMT_GUID	"97845ED0-4E6D-11DE-8A39-0800200C9A66"
 
 #define NOTIFY_BRNUP_MIN		0x11
@@ -2455,12 +2463,14 @@ static void asus_wmi_handle_event_code(int code, struct asus_wmi *asus)
 
 	if (asus->fan_boost_mode_available && code == NOTIFY_KBD_FBM) {
 		fan_boost_mode_switch_next(asus);
-		return;
+		if (!report_key_events)
+			return;
 	}
 
 	if (asus->throttle_thermal_policy_available && code == NOTIFY_KBD_TTP) {
 		throttle_thermal_policy_switch_next(asus);
-		return;
+		if (!report_key_events)
+			return;
 	}
 
 	if (is_display_toggle(code) && asus->driver->quirks->no_display_toggle)
@@ -2927,7 +2937,8 @@ static const struct key_entry asus_nb_wmi_keymap[] = {
 	{ KE_KEY, 0x92, { KEY_SWITCHVIDEOMODE } }, /* SDSP CRT + TV + DVI */
 	{ KE_KEY, 0x93, { KEY_SWITCHVIDEOMODE } }, /* SDSP LCD + CRT + TV + DVI */
 	{ KE_KEY, 0x95, { KEY_MEDIA } },
-	{ KE_KEY, 0x99, { KEY_PHONE } }, /* Conflicts with fan mode switch */
+	{ KE_KEY, NOTIFY_KBD_FBM, { KEY_FN_F5 } },
+	//{ KE_KEY, 0x99, { KEY_PHONE } }, /* Conflicts with fan mode switch */
 	{ KE_KEY, 0xA0, { KEY_SWITCHVIDEOMODE } }, /* SDSP HDMI only */
 	{ KE_KEY, 0xA1, { KEY_SWITCHVIDEOMODE } }, /* SDSP LCD + HDMI */
 	{ KE_KEY, 0xA2, { KEY_SWITCHVIDEOMODE } }, /* SDSP CRT + HDMI */
@@ -2936,6 +2947,7 @@ static const struct key_entry asus_nb_wmi_keymap[] = {
 	{ KE_KEY, 0xA5, { KEY_SWITCHVIDEOMODE } }, /* SDSP LCD + TV + HDMI */
 	{ KE_KEY, 0xA6, { KEY_SWITCHVIDEOMODE } }, /* SDSP CRT + TV + HDMI */
 	{ KE_KEY, 0xA7, { KEY_SWITCHVIDEOMODE } }, /* SDSP LCD + CRT + TV + HDMI */
+	{ KE_KEY, NOTIFY_KBD_TTP, { KEY_FN_F5 } },
 	{ KE_KEY, 0xB5, { KEY_CALC } },
 	{ KE_KEY, 0xC4, { KEY_KBDILLUMUP } },
 	{ KE_KEY, 0xC5, { KEY_KBDILLUMDOWN } },
@@ -3111,10 +3123,6 @@ static int asus_wmi_remove(struct platform_device *device)
 
 /// Faustus -------------------------------------------------------------------
 static struct platform_device* atw_platform_dev;
-
-static bool let_it_burn;
-module_param(let_it_burn, bool, 0);
-MODULE_PARM_DESC(let_it_burn, "Disable DMI check, force load");
 
 // Platform driver ************************************************************
 
