@@ -62,33 +62,42 @@ How to: first disable old drivers, then proceed using make to test that it works
 
 ### Disable original modules
 
-Create file /etc/modprobe.d/faustus.conf with following contents
+Create file /etc/modprobe.d/faustus.conf with the following contents and reboot the system.
+
 ```
 blacklist asus_wmi
 blacklist asus_nb_wmi
 ```
 
-Also unload them before proceeding in case they miraculously managed to load.
+You could also try unloading the modules instead of reboot before proceeding by issuing:
+
 ```
 sudo rmmod asus_nb_wmi
 sudo rmmod asus_wmi
 ```
 
-Some reports may suggest that you need to reboot after blacklisting, as they seem fail cleaning up on errors (do if you see AE_ALREADY_ACQUIRED in dmesg).
+Some reports may suggest that you need to reboot after blacklisting, as the modules fail cleaning up on errors (do if you see AE_ALREADY_ACQUIRED in dmesg).
 
 ### Install build dependencies and DKMS
+
 ```
 $ sudo apt-get install dkms
 ```
 
 ### Using make
+
 Compile and load the driver temporarily
+
 ```
 $ make
-$ sudo modprobe sparse-keymap wmi video
+$ sudo modprobe sparse-keymap
+$ sudo modprobe wmi
+$ sudo modprobe video
 $ sudo insmod src/faustus.ko
 ```
+
 and check `dmesg | tail` to verify the driver is loaded and no errors are present.
+
 ```
 [ 8295.475755] faustus: DMI checK: FX505GM
 [ 8295.476475] faustus: Initialization: 0x1
@@ -100,13 +109,24 @@ and check `dmesg | tail` to verify the driver is loaded and no errors are presen
 [ 8295.492695] faustus: Number of fans: 1
 ```
 
-Check that everything works, the system is stable. Also try unloading the driver with 
+If you see:
+
+```
+ERROR: could not insert module src/faustus.ko: No such device
+```
+
+it most likely means that your system is not in the "Systems" list above and not in the DMI table. This is not a bug and does not necessarily mean that the module does not work, but as there is no evidence that it does work on your system, it will fail fast with the above error message (see "Contributing" section below for bypassing the check if you feel adventurous).
+
+Check that everything works, the system is stable. Also try unloading the driver with
+
 ```
 $ sudo rmmod faustus
 ```
+
 and inserting it back.
 
 ### Using DKMS
+
 ```
 $ make dkms
 ```
