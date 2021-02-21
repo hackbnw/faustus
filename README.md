@@ -30,6 +30,9 @@ It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB b
 |FX705GM                 |FX705GM.305 |Manjaro             |5.3.18-1-MANJARO    |
 |FX505DV                 |FX505DV.303 |Ubuntu 19.10        |5.3.0-29-generic    |
 |FX505GE                 |FX505GE.302 |Manjaro Linux       |4.19.107-1-MANJARO  |
+|FX505GT                 |FX505GT.305 |Ubuntu 20.04        |5.4.0-42-generic    |
+|                        |FX505GT.304 |Manjaro 20.0.3      |5.4.52-1-MANJARO    |
+|                        |FX505GT.305 |Manjaro             |5.4.64-1-MANJARO    |
 
 See "Contributing" section for other versions.
 
