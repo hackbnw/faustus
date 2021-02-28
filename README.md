@@ -15,24 +15,25 @@ It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB b
 
 ## Systems
 
-|Model                   |BIOS        |OS                  |Kernel version      |
-|-                       |-           |-                   |-                   |
-|FX505GM                 |FX505GM.301 |Ubuntu 18.04.2 LTS  |4.18.0-25-generic   |
-|FX505DD (not tested)    |?           |?                   |                    |
-|FX505DY                 |FX505DY.308 |Arch Linux          |5.1.15-arch1-1-ARCH |
-|FX705GE                 |?           |?                   |?                   |
-|FX705DY                 |FX705DY.304 |openSUSE Tumbleweed |5.1.16-1-default    |
-|FX505GD                 |FX505GD.304 |?                   |?                   |
-|FX505DT                 |FX505DT.310 |Arch Linux          |Linux 5.7.5-arch1-1 |
-|FX705DT                 |FX705DT.308 |Arch Linux          |5.6.13-arch1-1      |
-|FX505DU                 |FX505DU.308 |Manjaro 18.1.5      |5.4.13-3-MANJARO    |
-|FX705DU                 |FX705DU.308 |Arch Linux          |5.4.13-zen1-1-zen   |
-|FX705GM                 |FX705GM.305 |Manjaro             |5.3.18-1-MANJARO    |
-|FX505DV                 |FX505DV.303 |Ubuntu 19.10        |5.3.0-29-generic    |
-|FX505GE                 |FX505GE.302 |Manjaro Linux       |4.19.107-1-MANJARO  |
-|FX505GT                 |FX505GT.305 |Ubuntu 20.04        |5.4.0-42-generic    |
-|                        |FX505GT.304 |Manjaro 20.0.3      |5.4.52-1-MANJARO    |
-|                        |FX505GT.305 |Manjaro             |5.4.64-1-MANJARO    |
+|Model                   |BIOS        |OS                     |Kernel version      |
+|-                       |-           |-                      |-                   |
+|FX505GM                 |FX505GM.301 |Ubuntu 18.04.2 LTS     |4.18.0-25-generic   |
+|FX505DD (not tested)    |?           |?                      |                    |
+|FX505DY                 |FX505DY.308 |Arch Linux             |5.1.15-arch1-1-ARCH |
+|FX705GE                 |?           |?                      |?                   |
+|FX705DY                 |FX705DY.304 |openSUSE Tumbleweed    |5.1.16-1-default    |
+|FX505GD                 |FX505GD.304 |?                      |?                   |
+|FX505DT                 |FX505DT.310 |Arch Linux             |Linux 5.7.5-arch1-1 |
+|                        |FX505DT.304 |Ubuntu 18.04.4/20.04.1 |5.4.0-42-generic    |
+|FX705DT                 |FX705DT.308 |Arch Linux             |5.6.13-arch1-1      |
+|FX505DU                 |FX505DU.308 |Manjaro 18.1.5         |5.4.13-3-MANJARO    |
+|FX705DU                 |FX705DU.308 |Arch Linux             |5.4.13-zen1-1-zen   |
+|FX705GM                 |FX705GM.305 |Manjaro                |5.3.18-1-MANJARO    |
+|FX505DV                 |FX505DV.303 |Ubuntu 19.10           |5.3.0-29-generic    |
+|FX505GE                 |FX505GE.302 |Manjaro Linux          |4.19.107-1-MANJARO  |
+|FX505GT                 |FX505GT.305 |Ubuntu 20.04           |5.4.0-42-generic    |
+|                        |FX505GT.304 |Manjaro 20.0.3         |5.4.52-1-MANJARO    |
+|                        |FX505GT.305 |Manjaro                |5.4.64-1-MANJARO    |
 
 See "Contributing" section for other versions.
 
