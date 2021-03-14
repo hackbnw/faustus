@@ -26,6 +26,8 @@ It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB b
 |FX505DT                 |FX505DT.310 |Arch Linux             |Linux 5.7.5-arch1-1         |
 |                        |FX505DT.304 |Ubuntu 18.04.4/20.04.1 |5.4.0-42-generic            |
 |                        |FX505DT.310 |openSUSE Leap 15.2     |5.3.18-lp152.57-default     |
+|                        |FX505DT.310 |Manjaro                |5.6.16-1-MANJARO            |
+|                        |FX505DT.310 |EndeavourOS            |5.10.7-arch1-1              |
 |FX705DT                 |FX705DT.308 |Arch Linux             |5.6.13-arch1-1              |
 |FX505DU                 |FX505DU.308 |Manjaro 18.1.5         |5.4.13-3-MANJARO            |
 |FX705DU                 |FX705DU.308 |Arch Linux             |5.4.13-zen1-1-zen           |
