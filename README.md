@@ -60,6 +60,8 @@ A Keyboard Lighting And Fan Mode Controller GUI App - awesome Electron-based fro
 [CalcProgrammer1/OpenRGB](https://gitlab.com/CalcProgrammer1/OpenRGB)  
 Open source RGB lighting control that doesn't depend on manufacturer software - supports multiple RGB controllers, including this driver.
 
+[cromer/tuf-manager](https://git.cromer.cl/cromer/tuf-manager)
+
 ## Installation
 
 How to: first disable old drivers, then proceed using make to test that it works at all, then install via DKMS permanently and enable on boot.
