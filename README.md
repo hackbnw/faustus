@@ -11,12 +11,13 @@ It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB b
 - If you either have RGB keyboard backlight that is managed via WMI, LTS kernel or you want to use features from mainline, you might want to consider trying this out.
 
 ## Fair warning
+
 **This is highly experimental and controls the ACPI / WMI responsible for dangerous low-level hardware features (for instance thermal management). So the possibility exists that you could erase data, lock up the system, disable thermal management and set your laptop on fire or worse. So use at your own risk if you know what you are doing.**
 
 ## Systems
 
-|Model                   |BIOS        |OS                     |Kernel version              |
-|-                       |-           |-                      |-                           |
+|Model                   |BIOS        |OS                     |Kernel version              |Notes
+|-                       |-           |-                      |-                           |-
 |FX505GM                 |FX505GM.301 |Ubuntu 18.04.2 LTS     |4.18.0-25-generic           |
 |FX505DD (not tested)    |?           |?                      |                            |
 |FX505DY                 |FX505DY.308 |Arch Linux             |5.1.15-arch1-1-ARCH         |
@@ -37,20 +38,30 @@ It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB b
 |FX505GT                 |FX505GT.305 |Ubuntu 20.04           |5.4.0-42-generic            |
 |                        |FX505GT.304 |Manjaro 20.0.3         |5.4.52-1-MANJARO            |
 |                        |FX505GT.305 |Manjaro                |5.4.64-1-MANJARO            |
+|FA706II                 |FA706II.304 |?                      |?                           |1 (#76)
+|FA706IU                 |FA706IU.315 |?                      |5.11.8-051108-generic       |1, 2 (#76)
+
+Notes:
+
+1. Fan mode control is not supported.
+2. RGB hot keys (Fn-Left, Fn-Right) are not functional.
 
 See "Contributing" section for other versions.
 
-To check your exact model run 
+To check your exact model run
+
+```default
+sudo dmidecode | less
 ```
-$ sudo dmidecode | less
-```
+
 and scroll down to check BIOS Information / Version (2nd column) and Base Board Information / Product name (1st column).
 
 ## Features
-* Additional Fn-X Hotkeys
-* Keyboard backlight intensity
-* Color and mode control for RGB keyboard backlight
-* Fan boost mode switching
+
+- Additional Fn-X Hotkeys
+- Keyboard backlight intensity
+- Color and mode control for RGB keyboard backlight
+- Fan boost mode switching
 
 ## UI
 

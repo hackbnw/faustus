@@ -3407,6 +3407,22 @@ static const struct dmi_system_id atw_dmi_list[] __initconst = {
 			DMI_MATCH(DMI_PRODUCT_NAME, "FX505GT"),
 		},
 	},
+	{
+		.callback = dmi_check_callback,
+		.ident = "FA706II",
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+			DMI_MATCH(DMI_PRODUCT_NAME, "FA706II"),
+		},
+	},
+	{
+		.callback = dmi_check_callback,
+		.ident = "FA706IU",
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+			DMI_MATCH(DMI_PRODUCT_NAME, "FA706IU"),
+		},
+	},
 	{}
 };
 
