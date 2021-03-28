@@ -38,6 +38,7 @@ It is a backport of the asus-wmi / asus-nb-wmi drivers from the mainline + RGB b
 |FX505GT                 |FX505GT.305 |Ubuntu 20.04           |5.4.0-42-generic            |
 |                        |FX505GT.304 |Manjaro 20.0.3         |5.4.52-1-MANJARO            |
 |                        |FX505GT.305 |Manjaro                |5.4.64-1-MANJARO            |
+|                        |FX505GT.303 |Mint Tricia 19.3       |5.4.0-58-generic            |
 |FA706II                 |FA706II.304 |?                      |?                           |1 (#76)
 |FA706IU                 |FA706IU.315 |?                      |5.11.8-051108-generic       |1, 2 (#76)
 
